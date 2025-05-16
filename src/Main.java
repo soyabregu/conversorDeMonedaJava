@@ -1,3 +1,7 @@
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
 import java.util.Scanner;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
@@ -8,6 +12,10 @@ public class Main {
         String monedaBase ;
         String monedaAconvertir;
         final String  key = "/aafd4024a38845e16e3a0cd5";
+
+
+
+
 
         String url = "https://v6.exchangerate-api.com/v6";
 
@@ -26,6 +34,17 @@ public class Main {
 
         System.out.println("su resultado es : ");
 
+
+        //creo elcliente que hara la consulta
+        HttpClient consultante = HttpClient.newHttpClient();
+
+//pedido //solucionar la url porque no se que moneda pedira el usuario
+        HttpRequest consulta = HttpRequest.newBuilder()
+                .uri(URI.create())
+                .build();
+
+        //respuesta que da error en el envio porque pueden salir mal las cosas ahi
+        HttpResponse<String> respuesta = consultante.send(consulta,HttpResponse.BodyHandlers.ofString());
 
 
 
